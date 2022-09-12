@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		449ACBDF28CD058A00EE4BE1 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBDE28CD058A00EE4BE1 /* MainVC.swift */; };
+		449ACBE128CE4ECC00EE4BE1 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBE028CE4ECC00EE4BE1 /* Door.swift */; };
+		449ACBE328CE5EFD00EE4BE1 /* DoorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */; };
+		449ACBE728CEB7E100EE4BE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBE628CEB7E100EE4BE1 /* Constants.swift */; };
+		449ACBE928CEBDBE00EE4BE1 /* DoorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */; };
 		44AFA92A28CD00DA0099D544 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFA92928CD00DA0099D544 /* AppDelegate.swift */; };
-		44AFA92C28CD00DA0099D544 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFA92B28CD00DA0099D544 /* SceneDelegate.swift */; };
-		44AFA92E28CD00DA0099D544 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFA92D28CD00DA0099D544 /* ViewController.swift */; };
-		44AFA93128CD00DA0099D544 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AFA92F28CD00DA0099D544 /* Main.storyboard */; };
 		44AFA93328CD00DB0099D544 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44AFA93228CD00DB0099D544 /* Assets.xcassets */; };
 		44AFA93628CD00DB0099D544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */; };
 		46561439CE98A5A36FB034B7 /* Pods_MyTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D66DCF04B3F92C14D57B83 /* Pods_MyTestProject.framework */; };
@@ -18,11 +20,13 @@
 
 /* Begin PBXFileReference section */
 		00D66DCF04B3F92C14D57B83 /* Pods_MyTestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		449ACBDE28CD058A00EE4BE1 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		449ACBE028CE4ECC00EE4BE1 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorCell.swift; sourceTree = "<group>"; };
+		449ACBE628CEB7E100EE4BE1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorData.swift; sourceTree = "<group>"; };
 		44AFA92628CD00DA0099D544 /* MyTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44AFA92928CD00DA0099D544 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		44AFA92B28CD00DA0099D544 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		44AFA92D28CD00DA0099D544 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		44AFA93028CD00DA0099D544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44AFA93228CD00DB0099D544 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44AFA93528CD00DB0099D544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44AFA93728CD00DB0099D544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +52,6 @@
 				C1B7F12F35C460A36FD419F9 /* Pods-MyTestProject.debug.xcconfig */,
 				EC2AE69CBAC17E429A4F3838 /* Pods-MyTestProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,12 +77,14 @@
 			isa = PBXGroup;
 			children = (
 				44AFA92928CD00DA0099D544 /* AppDelegate.swift */,
-				44AFA92B28CD00DA0099D544 /* SceneDelegate.swift */,
-				44AFA92D28CD00DA0099D544 /* ViewController.swift */,
-				44AFA92F28CD00DA0099D544 /* Main.storyboard */,
 				44AFA93228CD00DB0099D544 /* Assets.xcassets */,
 				44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */,
 				44AFA93728CD00DB0099D544 /* Info.plist */,
+				449ACBDE28CD058A00EE4BE1 /* MainVC.swift */,
+				449ACBE028CE4ECC00EE4BE1 /* Door.swift */,
+				449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */,
+				449ACBE628CEB7E100EE4BE1 /* Constants.swift */,
+				449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */,
 			);
 			path = MyTestProject;
 			sourceTree = "<group>";
@@ -154,7 +159,6 @@
 			files = (
 				44AFA93628CD00DB0099D544 /* LaunchScreen.storyboard in Resources */,
 				44AFA93328CD00DB0099D544 /* Assets.xcassets in Resources */,
-				44AFA93128CD00DA0099D544 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,23 +211,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44AFA92E28CD00DA0099D544 /* ViewController.swift in Sources */,
 				44AFA92A28CD00DA0099D544 /* AppDelegate.swift in Sources */,
-				44AFA92C28CD00DA0099D544 /* SceneDelegate.swift in Sources */,
+				449ACBE328CE5EFD00EE4BE1 /* DoorCell.swift in Sources */,
+				449ACBE128CE4ECC00EE4BE1 /* Door.swift in Sources */,
+				449ACBDF28CD058A00EE4BE1 /* MainVC.swift in Sources */,
+				449ACBE728CEB7E100EE4BE1 /* Constants.swift in Sources */,
+				449ACBE928CEBDBE00EE4BE1 /* DoorData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		44AFA92F28CD00DA0099D544 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				44AFA93028CD00DA0099D544 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,7 +361,6 @@
 				INFOPLIST_FILE = MyTestProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -391,7 +389,6 @@
 				INFOPLIST_FILE = MyTestProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
