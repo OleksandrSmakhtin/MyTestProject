@@ -55,6 +55,39 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		449ACBEA28CF6C8200EE4BE1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				449ACBDE28CD058A00EE4BE1 /* MainVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		449ACBEC28CF6CA100EE4BE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		449ACBED28CF6CBB00EE4BE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				449ACBE028CE4ECC00EE4BE1 /* Door.swift */,
+				449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		449ACBEE28CF6CCF00EE4BE1 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				449ACBE628CEB7E100EE4BE1 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		44AFA91D28CD00DA0099D544 = {
 			isa = PBXGroup;
 			children = (
@@ -76,15 +109,14 @@
 		44AFA92828CD00DA0099D544 /* MyTestProject */ = {
 			isa = PBXGroup;
 			children = (
+				449ACBEE28CF6CCF00EE4BE1 /* Constants */,
+				449ACBED28CF6CBB00EE4BE1 /* Model */,
+				449ACBEC28CF6CA100EE4BE1 /* View */,
+				449ACBEA28CF6C8200EE4BE1 /* Controller */,
 				44AFA92928CD00DA0099D544 /* AppDelegate.swift */,
 				44AFA93228CD00DB0099D544 /* Assets.xcassets */,
 				44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */,
 				44AFA93728CD00DB0099D544 /* Info.plist */,
-				449ACBDE28CD058A00EE4BE1 /* MainVC.swift */,
-				449ACBE028CE4ECC00EE4BE1 /* Door.swift */,
-				449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */,
-				449ACBE628CEB7E100EE4BE1 /* Constants.swift */,
-				449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */,
 			);
 			path = MyTestProject;
 			sourceTree = "<group>";
