@@ -12,6 +12,7 @@
 		449ACBE328CE5EFD00EE4BE1 /* DoorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */; };
 		449ACBE728CEB7E100EE4BE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBE628CEB7E100EE4BE1 /* Constants.swift */; };
 		449ACBE928CEBDBE00EE4BE1 /* DoorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */; };
+		449ACBF228D2412B00EE4BE1 /* CircleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBF128D2412B00EE4BE1 /* CircleAnimation.swift */; };
 		44AFA92A28CD00DA0099D544 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFA92928CD00DA0099D544 /* AppDelegate.swift */; };
 		44AFA93328CD00DB0099D544 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44AFA93228CD00DB0099D544 /* Assets.xcassets */; };
 		44AFA93628CD00DB0099D544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */; };
@@ -25,6 +26,7 @@
 		449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorCell.swift; sourceTree = "<group>"; };
 		449ACBE628CEB7E100EE4BE1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorData.swift; sourceTree = "<group>"; };
+		449ACBF128D2412B00EE4BE1 /* CircleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleAnimation.swift; sourceTree = "<group>"; };
 		44AFA92628CD00DA0099D544 /* MyTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44AFA92928CD00DA0099D544 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44AFA93228CD00DB0099D544 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */,
+				449ACBF128D2412B00EE4BE1 /* CircleAnimation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				449ACBE328CE5EFD00EE4BE1 /* DoorCell.swift in Sources */,
 				449ACBE128CE4ECC00EE4BE1 /* Door.swift in Sources */,
 				449ACBDF28CD058A00EE4BE1 /* MainVC.swift in Sources */,
+				449ACBF228D2412B00EE4BE1 /* CircleAnimation.swift in Sources */,
 				449ACBE728CEB7E100EE4BE1 /* Constants.swift in Sources */,
 				449ACBE928CEBDBE00EE4BE1 /* DoorData.swift in Sources */,
 			);

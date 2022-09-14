@@ -9,14 +9,13 @@ import UIKit
 
 class DoorCell: UITableViewCell {
 
-    
+    // declare UI elements
     let titleLbl = UILabel()
     let positionLbl = UILabel()
     let statusBtn = UIButton()
     let shieldImage = UIImageView()
     let doorImage = UIImageView()
-    
-    let unlockingShield = UIImageView()
+    let loadCircle = CircleAnimation()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -24,8 +23,6 @@ class DoorCell: UITableViewCell {
         // disable selection
         self.selectionStyle = .none
         configureContentView()
-        
-
         
         configureTitleLbl()
         configurePositionLbl()
@@ -38,13 +35,27 @@ class DoorCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//MARK: - Animations
+    // Load cirecle animation
+    func configureLoadAnimation() {
+        doorImage.addSubview(loadCircle)
+        loadCircle.snp.makeConstraints { make in
+            make.top.equalTo(doorImage.snp_topMargin)
+            make.bottom.equalTo(doorImage.snp_bottomMargin)
+            make.right.equalTo(doorImage.snp_rightMargin)
+            make.left.equalTo(doorImage.snp_leftMargin)
+            make.size.equalTo(22)
+        }
+    }
+    
+    // Three dot animation
     func threeDotsAnim(animate: Bool) {
         let lay = CAReplicatorLayer()
         lay.frame = CGRect(x: 8, y: 18, width: 15, height: 7) //yPos == 12
         let circle = CALayer()
         circle.frame = CGRect(x: 0, y: 0, width: 5, height: 5)
         circle.cornerRadius = circle.frame.width / 2
-        circle.backgroundColor = UIColor.white.cgColor// UIColor(red: 110/255.0, green: 110/255.0, blue: 110/255.0, alpha: 1).cgColor//lightGray.cgColor //UIColor.black.cgColor
+        circle.backgroundColor = UIColor.white.cgColor
         lay.addSublayer(circle)
         lay.instanceCount = 3
         lay.instanceTransform = CATransform3DMakeTranslation(10, 0, 0)
@@ -64,36 +75,40 @@ class DoorCell: UITableViewCell {
         }
     
     
-//MARK: - Set cell
+//MARK: - Configure cell
     func configureCell(door: Door) {
-        //if door.status == K.DoorStatus.unlocking {
-        //    updatingCell()
-        //}
-        
-        
-//        if door.status == K.DoorStatus.unlocking {
-//            titleLbl.text = door.title
-//            positionLbl.text = door.position
-//            statusBtn.setTitle(door.status, for: .normal)
-//        } else {
             titleLbl.text = door.title
             positionLbl.text = door.position
             statusBtn.setTitle(door.status, for: .normal)
-        //}
-        
     }
     
-    func updatingCell() {
-        
+//MARK: - Update status
+    func unlockingDoor() {
+    // unlocking updates for:
+        // shield image
         shieldImage.image = UIImage(named: K.StatusImagesNames.shieldUnlocking)
+        threeDotsAnim(animate: true)
+        
+        // staus button
         statusBtn.setTitleColor(#colorLiteral(red: 0.8313726783, green: 0.8313726187, blue: 0.8313726187, alpha: 1), for: .normal)
         
-        threeDotsAnim(animate: true)
+        // door image
+        doorImage.image = UIImage(named: "doorUnlocking")
+        configureLoadAnimation()
+        loadCircle.animate()
     }
     
-    func updatedCell() {
+    func unlockDoor() {
+    // unlock updates for:
+        // door image
+        doorImage.image = UIImage(named: K.StatusImagesNames.doorUnlocked)
+        loadCircle.removeFromSuperview()
+        
+        // shield image
         shieldImage.layer.removeAllAnimations()
         shieldImage.image = UIImage(named: K.StatusImagesNames.shieldUnlocked)
+        
+        // status button
         statusBtn.setTitleColor(#colorLiteral(red: 0.5039272904, green: 0.6311599612, blue: 0.7736265063, alpha: 1), for: .normal)
         statusBtn.setTitle("Unlocked", for: .normal)
        
@@ -101,9 +116,15 @@ class DoorCell: UITableViewCell {
         
     }
     
-    func lockedCell() {
+    func lockDoor() {
+    // loack updates for:
+        // shield image
         shieldImage.image = UIImage(named: K.StatusImagesNames.shieldLocked)
+        
+        // door image
         doorImage.image = UIImage(named: K.StatusImagesNames.doorLocked)
+        
+        // status button
         statusBtn.setTitleColor(#colorLiteral(red: 0.0002588513307, green: 0.2672565579, blue: 0.544146657, alpha: 1), for: .normal)
         statusBtn.setTitle("Locked", for: .normal)
     }
@@ -111,8 +132,8 @@ class DoorCell: UITableViewCell {
     
     
     
-//MARK: - Set UI
-    // set door image
+//MARK: - Configure UI
+    // configure door image
     func configureDoorImage() {
         contentView.addSubview(doorImage)
         doorImage.image = UIImage(named: K.StatusImagesNames.doorLocked)
@@ -120,7 +141,7 @@ class DoorCell: UITableViewCell {
         doorImage.contentMode = .scaleAspectFill
     }
 
-    // set shield image
+    // configure shield image
     func configureShieldImage() {
         contentView.addSubview(shieldImage)
         shieldImage.image = UIImage(named: K.StatusImagesNames.shieldLocked)
@@ -128,7 +149,7 @@ class DoorCell: UITableViewCell {
         shieldImage.contentMode = .scaleAspectFill
     }
 
-    // set status button
+    // configure status button
     func configureStatusBtn() {
         contentView.addSubview(statusBtn)
         statusBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
@@ -136,21 +157,21 @@ class DoorCell: UITableViewCell {
         statusBtn.titleLabel?.textColor = #colorLiteral(red: 0.0002588513307, green: 0.2672565579, blue: 0.544146657, alpha: 1)
     }
 
-    // set position label
+    // configure position label
     func configurePositionLbl() {
         contentView.addSubview(positionLbl)
         positionLbl.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         positionLbl.textColor = #colorLiteral(red: 0.725490272, green: 0.7254902124, blue: 0.725490272, alpha: 1)
     }
 
-    // set title label
+    // configure title label
     func configureTitleLbl() {
         contentView.addSubview(titleLbl)
         titleLbl.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLbl.textColor = #colorLiteral(red: 0.1962750554, green: 0.2163220048, blue: 0.334228158, alpha: 1)
     }
     
-    // set contentView
+    // configure contentView
     func configureContentView() {
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = #colorLiteral(red: 0.8887098432, green: 0.91862005, blue: 0.9181008935, alpha: 1)
@@ -159,9 +180,9 @@ class DoorCell: UITableViewCell {
     }
     
 //MARK: - Set constraints
-    // set constraints
     override func layoutSubviews() {
             super.layoutSubviews()
+    // set constraints:
         // for content view
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
         
@@ -195,9 +216,6 @@ class DoorCell: UITableViewCell {
                     make.centerX.equalTo(contentView)
                 }
     }
-
-    
-    
 
     
 }
