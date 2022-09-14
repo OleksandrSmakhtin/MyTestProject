@@ -51,7 +51,5 @@ class ApiManager {
         
         
     }
-    
-    
-    
+
 }
