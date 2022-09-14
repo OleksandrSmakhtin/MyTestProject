@@ -12,14 +12,24 @@ class MainVC: UIViewController {
     
     let tableView = UITableView()
     let stackView = UIStackView()
-    var doors = DoorData.instance.getDoors()
-    var firstLoad = true
     
+    //var doors = DoorData.instance.getDoors()
+    var doors = [Door]()
+    var firstLoad = true
+    var apiManager = ApiManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // fetch request imitation
+        DispatchQueue.main.async {
+            self.apiManager.fetchDoors()
+        }
+        apiManager.delegate = self
+        
         setView()
         configureTableView()
+        //apiManager.delegate = self
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.firstLoad = false
             self.tableView.reloadData()
@@ -28,15 +38,19 @@ class MainVC: UIViewController {
     }
 }
 
+//MARK: - DoorFetchRequest
+func fetchDoors() {
+    
+}
 
-
-
-
-
-
-
-
-
+extension MainVC: ApiManagerDelegate {
+    func didLoadDoors(_ apiManager: ApiManager, doors: [Door]) {
+        DispatchQueue.main.async {
+            self.doors = doors
+            print(doors)
+        }
+    }
+}
 
 
 

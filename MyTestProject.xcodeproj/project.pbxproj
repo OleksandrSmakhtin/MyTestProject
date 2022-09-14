@@ -16,7 +16,6 @@
 		449ACBF428D2575800EE4BE1 /* LoadingDoorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBF328D2575800EE4BE1 /* LoadingDoorCell.swift */; };
 		449ACBF728D25FB700EE4BE1 /* LoadingCellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBF628D25FB700EE4BE1 /* LoadingCellAnimation.swift */; };
 		449ACBFA28D2658400EE4BE1 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBF928D2658400EE4BE1 /* ApiManager.swift */; };
-		449ACBFC28D2664B00EE4BE1 /* DoorForApiImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACBFB28D2664B00EE4BE1 /* DoorForApiImitation.swift */; };
 		44AFA92A28CD00DA0099D544 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFA92928CD00DA0099D544 /* AppDelegate.swift */; };
 		44AFA93328CD00DB0099D544 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44AFA93228CD00DB0099D544 /* Assets.xcassets */; };
 		44AFA93628CD00DB0099D544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */; };
@@ -34,7 +33,6 @@
 		449ACBF328D2575800EE4BE1 /* LoadingDoorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDoorCell.swift; sourceTree = "<group>"; };
 		449ACBF628D25FB700EE4BE1 /* LoadingCellAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCellAnimation.swift; sourceTree = "<group>"; };
 		449ACBF928D2658400EE4BE1 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		449ACBFB28D2664B00EE4BE1 /* DoorForApiImitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorForApiImitation.swift; sourceTree = "<group>"; };
 		44AFA92628CD00DA0099D544 /* MyTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44AFA92928CD00DA0099D544 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44AFA93228CD00DB0099D544 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 			children = (
 				449ACBE028CE4ECC00EE4BE1 /* Door.swift */,
 				449ACBE828CEBDBE00EE4BE1 /* DoorData.swift */,
-				449ACBFB28D2664B00EE4BE1 /* DoorForApiImitation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,7 +279,6 @@
 				449ACBDF28CD058A00EE4BE1 /* MainVC.swift in Sources */,
 				449ACBF228D2412B00EE4BE1 /* CircleAnimation.swift in Sources */,
 				449ACBF728D25FB700EE4BE1 /* LoadingCellAnimation.swift in Sources */,
-				449ACBFC28D2664B00EE4BE1 /* DoorForApiImitation.swift in Sources */,
 				449ACBE728CEB7E100EE4BE1 /* Constants.swift in Sources */,
 				449ACBE928CEBDBE00EE4BE1 /* DoorData.swift in Sources */,
 			);

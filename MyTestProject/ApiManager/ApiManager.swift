@@ -7,49 +7,64 @@
 
 import Foundation
 
+protocol ApiManagerDelegate {
+    func didLoadDoors(_ apiManager: ApiManager, doors: [Door])
+}
 
-class ApiManager {
-    static let instance = ApiManager()
+struct ApiManager {
+    var delegate: ApiManagerDelegate?
     
-    // Example
-    let apiUrl = "https://api.mysmartdoor.com/data...."
-    let ApiChangeStatusUrl = "https://api.mysmartdoor.com/status...."
+    // Example url
+    let apiUrl = "https://api.mysmartdoor.com"
+
+    // fetch imitation
+    func fetchDoors() {
+        let correctUrl = "\(apiUrl)/data/for/user/oleksandrsmakhtin"
+        performRequest(urlString: correctUrl)
+    }
     
-    let session = URLSession(configuration: .default)
     
-    func getDoors(onSuccess: @escaping (Doors) -> Void, onError: @escaping (String) -> Void) {
-        let url = URL(string: apiUrl)!
-        let task = session.dataTask(with: url) { data, response, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    onError(error.localizedDescription)
+    func performRequest(urlString: String) {
+        if let url = URL(string: urlString) {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { data, response, error in
+                // imitated data, error
+                let imitError: Error? = nil
+                let imitData: [Door]? = DoorData.instance.getDoors()
+                
+                if imitError != nil {
+                    print(imitError?.localizedDescription)
                     return
                 }
                 
-                guard let data = data, let  response = response as? HTTPURLResponse else {
-                    onError("Invalid data or response")
-                    return }
-                
-                do {
-                    if response.statusCode == 200{
-                        // parse data
-                        //let doors = try JSONDecoder().decode(DoorsForApiImit.self, from: data)
-                        
-                        // imitation
-                        let doors = DoorData.instance.getDoors()
-                        let data = Doors(doors: doors)
-                        onSuccess(data)
+                if let safeData = imitData {
+                    if let doors = parseJSON(apiData: safeData) {
+                        delegate?.didLoadDoors(self, doors: doors)
                     }
-                    
-                } catch {
-                    onError(error.localizedDescription)
                 }
+                
+                
+                
             }
+            task.resume()
         }
-        task.resume()
-        
-        
-        
+    }
+    
+//MARK: - JSON parser
+                        // imitation (real case type = Data)
+    func parseJSON(apiData: [Door]) -> [Door]? {
+        let decoder = JSONDecoder()
+        do {
+            // if real case
+            //let decodedData = try decoder.(Door.self, from: apiData)
+            
+            // imitation
+            let decodedData = apiData
+            return decodedData
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
 
 }
