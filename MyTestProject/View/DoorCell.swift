@@ -49,7 +49,7 @@ class DoorCell: UITableViewCell {
     }
     
     // Three dot animation
-    func threeDotsAnim(animate: Bool) {
+    func threeDotsAnim() {
         let lay = CAReplicatorLayer()
         lay.frame = CGRect(x: 8, y: 18, width: 15, height: 7) //yPos == 12
         let circle = CALayer()
@@ -87,7 +87,7 @@ class DoorCell: UITableViewCell {
     // unlocking updates for:
         // shield image
         shieldImage.image = UIImage(named: K.StatusImagesNames.shieldUnlocking)
-        threeDotsAnim(animate: true)
+        threeDotsAnim()
         
         // staus button
         statusBtn.setTitleColor(#colorLiteral(red: 0.8313726783, green: 0.8313726187, blue: 0.8313726187, alpha: 1), for: .normal)
