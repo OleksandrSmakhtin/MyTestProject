@@ -11,8 +11,10 @@ class MainVC: UIViewController {
 
     
     let tableView = UITableView()
+    let stackView = UIStackView()
     var doors = DoorData.instance.getDoors()
     var firstLoad = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +26,117 @@ class MainVC: UIViewController {
             self.tableView.allowsSelection = true
         }
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MARK: - Set TableView
+extension MainVC {
+    func configureTableView() {
+        view.addSubview(tableView)
+        // set delegates
+        setTableViewDelegates()
+        // register cell
+        tableView.register(DoorCell.self, forCellReuseIdentifier: "DoorCell")
+        tableView.register(LoadingDoorCell.self, forCellReuseIdentifier: "LoadingCell")
+    // settings
+        // disable separator
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        // disable scroll indicator
+        tableView.showsVerticalScrollIndicator = false
+        // set row height
+        tableView.rowHeight = 131
+        // set constrains
+        tableView.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(15)
+            make.left.equalToSuperview().inset(15)
+            make.bottom.equalToSuperview()
+            make.top.equalTo(stackView.snp_bottomMargin).offset(84)
+        }
+    }
+    // delegates
+    func setTableViewDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}
+
+
+//MARK: - TableView Delegate & DataSource
+extension MainVC: UITableViewDelegate, UITableViewDataSource {
+    // number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DoorData.instance.getDoors().count
+    }
     
-    let stackView = UIStackView()
+    // set cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if firstLoad {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath) as! LoadingDoorCell
+            tableView.allowsSelection = false
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DoorCell", for: indexPath) as! DoorCell
+            cell.delegate = self
+            let door = doors[indexPath.row]
+            
+            if door.status == K.DoorStatus.unlocking {
+                    cell.unlockingDoor()
+                    tableView.allowsSelection = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        cell.unlockDoor()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            cell.lockDoor()
+                            tableView.allowsSelection = true
+                        }
+                    }
+            }
+            self.doors[indexPath.row].status = K.DoorStatus.locked
+            cell.configureCell(door: door)
+            return cell
+        }
+
+        //return cell
+    }
     
+    
+    // select row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        doors[indexPath.row].status = K.DoorStatus.unlocking
+        tableView.reloadData()
+    }
+    
+    
+}
+
+//MARK: - Change Status Delegate
+extension MainVC: StatusButtonDelegate {
+    func changeStatus(cell: DoorCell) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+        doors[indexPath.row].status = K.DoorStatus.unlocking
+        tableView.reloadData()
+        print(indexPath.row)
+    }
+    
+}
+
+
+//MARK: - Set UI
+extension MainVC {
     func setView() {
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         view.addSubview(stackView)
@@ -76,90 +186,4 @@ class MainVC: UIViewController {
         homeImageView.contentMode = .scaleAspectFill
         welcomeAndHomeStack.addArrangedSubview(homeImageView)
     }
-    
-    
-    
-    func configureTableView() {
-        view.addSubview(tableView)
-        // set delegates
-        setTableViewDelegates()
-        // register cell
-        tableView.register(DoorCell.self, forCellReuseIdentifier: "DoorCell")
-        tableView.register(LoadingDoorCell.self, forCellReuseIdentifier: "LoadingCell")
-    // settings
-        // disable separator
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        // disable scroll indicator
-        tableView.showsVerticalScrollIndicator = false
-        // set row height
-        tableView.rowHeight = 131
-        // set constrains
-        tableView.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(15)
-            make.left.equalToSuperview().inset(15)
-            make.bottom.equalToSuperview()
-            make.top.equalTo(stackView.snp_bottomMargin).offset(84)
-        }
-    }
-    // delegates
-    func setTableViewDelegates() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-
-
-}
-
-//MARK: - TableView Delegate & DataSource
-
-extension MainVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DoorData.instance.getDoors().count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if firstLoad {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath) as! LoadingDoorCell
-            tableView.allowsSelection = false
-            return cell
-            
-        } else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DoorCell", for: indexPath) as! DoorCell
-            let door = doors[indexPath.row]
-            
-            if door.status == K.DoorStatus.unlocking {
-                    cell.unlockingDoor()
-                    tableView.allowsSelection = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        cell.unlockDoor()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            cell.lockDoor()
-                            tableView.allowsSelection = true
-                        }
-                    }
-            }
-            self.doors[indexPath.row].status = K.DoorStatus.locked
-            cell.configureCell(door: door)
-            return cell
-        }
-        
-        
-        
-
-        
-        //return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        doors[indexPath.row].status = K.DoorStatus.unlocking
-    
-        tableView.reloadData()
-                
-    }
-    
-    
 }

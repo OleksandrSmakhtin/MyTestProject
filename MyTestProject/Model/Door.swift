@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct Doors {
+    var doors: Array<Door>
+}
+
+
 struct Door {
     var title: String
     var position: String

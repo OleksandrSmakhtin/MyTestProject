@@ -7,8 +7,16 @@
 
 import UIKit
 
+protocol StatusButtonDelegate {
+    func changeStatus(cell: DoorCell)
+}
+
 class DoorCell: UITableViewCell {
 
+    //set delegate
+    var delegate: StatusButtonDelegate?
+    
+    
     // declare UI elements
     let titleLbl = UILabel()
     let positionLbl = UILabel()
@@ -155,6 +163,11 @@ class DoorCell: UITableViewCell {
         statusBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         statusBtn.setTitleColor(#colorLiteral(red: 0.0002588513307, green: 0.2672565579, blue: 0.544146657, alpha: 1), for: .normal)
         statusBtn.titleLabel?.textColor = #colorLiteral(red: 0.0002588513307, green: 0.2672565579, blue: 0.544146657, alpha: 1)
+        statusBtn.addTarget(self, action: #selector(changeDoorStatus), for: .touchUpInside)
+    }
+    // delegate func
+    @objc func changeDoorStatus() {
+        delegate?.changeStatus(cell: self)
     }
 
     // configure position label
