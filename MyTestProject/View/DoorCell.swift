@@ -101,7 +101,7 @@ class DoorCell: UITableViewCell {
         statusBtn.setTitleColor(#colorLiteral(red: 0.8313726783, green: 0.8313726187, blue: 0.8313726187, alpha: 1), for: .normal)
         
         // door image
-        doorImage.image = UIImage(named: "doorUnlocking")
+        doorImage.image = UIImage(named: K.StatusImagesNames.doorUnlocking)
         configureLoadAnimation()
         loadCircle.animate()
     }
@@ -118,7 +118,7 @@ class DoorCell: UITableViewCell {
         
         // status button
         statusBtn.setTitleColor(#colorLiteral(red: 0.5039272904, green: 0.6311599612, blue: 0.7736265063, alpha: 1), for: .normal)
-        statusBtn.setTitle("Unlocked", for: .normal)
+        statusBtn.setTitle(K.DoorStatus.unlocked, for: .normal)
        
         
         
@@ -134,7 +134,7 @@ class DoorCell: UITableViewCell {
         
         // status button
         statusBtn.setTitleColor(#colorLiteral(red: 0.0002588513307, green: 0.2672565579, blue: 0.544146657, alpha: 1), for: .normal)
-        statusBtn.setTitle("Locked", for: .normal)
+        statusBtn.setTitle(K.DoorStatus.locked, for: .normal)
     }
     
     

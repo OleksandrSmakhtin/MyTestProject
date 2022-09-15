@@ -63,7 +63,7 @@
     </scenes>
     <resources>
         <image name="interQR" width="86" height="17.5"/>
-        <image name="launchBG" width="266" height="474"/>
+        <image name="launchBG" width="266.5" height="474"/>
         <image name="shieldLocked" width="41" height="41"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -24,7 +24,8 @@ class MainVC: UIViewController {
         DispatchQueue.main.async {
             self.apiManager.fetchDoors()
         }
-        apiManager.delegate = self
+        apiManager.getDelegate = self
+        apiManager.changeStatusDelegate = self
         
         setView()
         configureTableView()
@@ -37,14 +38,27 @@ class MainVC: UIViewController {
     }
 }
 
-//MARK: - ApiManagerDelegate
-extension MainVC: ApiManagerDelegate {
+//MARK: - ApiGetDelegate
+extension MainVC: ApiGetDelegate {
     func didLoadDoors(_ apiManager: ApiManager, doors: [Door]) {
         DispatchQueue.main.async {
             self.doors = doors
             print(doors)
         }
     }
+}
+
+//MARK: - ApiChangeDlegate
+extension MainVC: ApiChangeStatusDelegate {
+    func didChangeStatus(_ apiManager: ApiManager, status: String, index: Int) {
+        //DispatchQueue.main.async {
+            self.doors[index].status = status
+        //}
+    }
+    
+    
+    
+    
 }
 
 
@@ -56,8 +70,8 @@ extension MainVC {
         // set delegates
         setTableViewDelegates()
         // register cell
-        tableView.register(DoorCell.self, forCellReuseIdentifier: "DoorCell")
-        tableView.register(LoadingDoorCell.self, forCellReuseIdentifier: "LoadingCell")
+        tableView.register(DoorCell.self, forCellReuseIdentifier: K.Cells.doorCell)
+        tableView.register(LoadingDoorCell.self, forCellReuseIdentifier: K.Cells.loadingCell)
     // settings
         // disable separator
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -93,22 +107,25 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         
         if firstLoad {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath) as! LoadingDoorCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.loadingCell, for: indexPath) as! LoadingDoorCell
             tableView.allowsSelection = false
             return cell
             
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DoorCell", for: indexPath) as! DoorCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.doorCell, for: indexPath) as! DoorCell
             cell.delegate = self
             let door = doors[indexPath.row]
             
             if door.status == K.DoorStatus.unlocking {
+                apiManager.fetchStatus(status: K.DoorStatus.unlocking, index: indexPath.row)
                     cell.unlockingDoor()
                     tableView.allowsSelection = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        self.apiManager.fetchStatus(status: K.DoorStatus.unlocked, index: indexPath.row)
                         cell.unlockDoor()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            self.apiManager.fetchStatus(status: K.DoorStatus.locked, index: indexPath.row)
                             cell.lockDoor()
                             tableView.allowsSelection = true
                         }
@@ -136,7 +153,6 @@ extension MainVC: StatusButtonDelegate {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         doors[indexPath.row].status = K.DoorStatus.unlocking
         tableView.reloadData()
-        print(indexPath.row)
     }
     
 }
@@ -164,13 +180,13 @@ extension MainVC {
         
         // Logo
         let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: "interQR")
+        logoImageView.image = UIImage(named: K.uiElements.interQR)
         logoImageView.contentMode = .scaleAspectFit
         logoAndSettingStack.addArrangedSubview(logoImageView)
 
         // Setting Btn
         let settingBtn = UIButton()
-        settingBtn.setImage(UIImage(named: "Setting"), for: .normal)
+        settingBtn.setImage(UIImage(named: K.uiElements.setting), for: .normal)
         logoAndSettingStack.addArrangedSubview(settingBtn)
 
         // Welcome and Home StackView
@@ -183,13 +199,13 @@ extension MainVC {
         
         // Welcome Lbl
         let welcomeLbl = UILabel()
-        welcomeLbl.text = "Welcome"
+        welcomeLbl.text = K.uiElements.welcome
         welcomeLbl.font = UIFont.systemFont(ofSize: 34, weight: .medium)
         welcomeAndHomeStack.addArrangedSubview(welcomeLbl)
         
         // Home image
         let homeImageView = UIImageView()
-        homeImageView.image = UIImage(named: "Home")
+        homeImageView.image = UIImage(named: K.uiElements.home)
         homeImageView.contentMode = .scaleAspectFill
         welcomeAndHomeStack.addArrangedSubview(homeImageView)
     }

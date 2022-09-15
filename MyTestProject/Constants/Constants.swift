@@ -21,7 +21,20 @@ struct K {
         static let shieldUnlocking = "shieldUnlocking"
         static let doorLocked = "doorLocked"
         static let doorUnlocked = "doorUnlocked"
+        static let doorUnlocking = "doorUnlocking"
         
+    }
+    
+    struct Cells {
+        static let doorCell = "DoorCell"
+        static let loadingCell = "LoadingCell"
+    }
+    
+    struct uiElements {
+        static let setting = "Setting"
+        static let welcome = "Welcome"
+        static let interQR = "interQR"
+        static let home = "Home"
     }
     
 }

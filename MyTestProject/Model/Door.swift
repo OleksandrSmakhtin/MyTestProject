@@ -7,12 +7,7 @@
 
 import Foundation
 
-struct Doors {
-    var doors: Array<Door>
-}
-
-
-struct Door {
+struct Door: Codable {
     var title: String
     var position: String
     var status: String

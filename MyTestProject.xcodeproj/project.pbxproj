@@ -74,6 +74,7 @@
 		449ACBEC28CF6CA100EE4BE1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				449ACBFF28D2C04400EE4BE1 /* LaunchScreen */,
 				449ACBF528D25F8E00EE4BE1 /* Animations */,
 				449ACBE228CE5EFD00EE4BE1 /* DoorCell.swift */,
 				449ACBF328D2575800EE4BE1 /* LoadingDoorCell.swift */,
@@ -115,6 +116,30 @@
 			path = ApiManager;
 			sourceTree = "<group>";
 		};
+		449ACBFD28D2BFFE00EE4BE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				44AFA93228CD00DB0099D544 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		449ACBFE28D2C03800EE4BE1 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				44AFA92928CD00DA0099D544 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		449ACBFF28D2C04400EE4BE1 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		44AFA91D28CD00DA0099D544 = {
 			isa = PBXGroup;
 			children = (
@@ -136,14 +161,13 @@
 		44AFA92828CD00DA0099D544 /* MyTestProject */ = {
 			isa = PBXGroup;
 			children = (
+				449ACBFE28D2C03800EE4BE1 /* AppDelegate */,
 				449ACBF828D2654200EE4BE1 /* ApiManager */,
 				449ACBEE28CF6CCF00EE4BE1 /* Constants */,
 				449ACBED28CF6CBB00EE4BE1 /* Model */,
 				449ACBEC28CF6CA100EE4BE1 /* View */,
 				449ACBEA28CF6C8200EE4BE1 /* Controller */,
-				44AFA92928CD00DA0099D544 /* AppDelegate.swift */,
-				44AFA93228CD00DB0099D544 /* Assets.xcassets */,
-				44AFA93428CD00DB0099D544 /* LaunchScreen.storyboard */,
+				449ACBFD28D2BFFE00EE4BE1 /* Resources */,
 				44AFA93728CD00DB0099D544 /* Info.plist */,
 			);
 			path = MyTestProject;

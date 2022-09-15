@@ -7,9 +7,6 @@
 
 import Foundation
 
-
-
-
 class DoorData {
     static let instance = DoorData()
 

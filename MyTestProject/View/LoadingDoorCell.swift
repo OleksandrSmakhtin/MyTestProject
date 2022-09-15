@@ -26,7 +26,7 @@ class LoadingDoorCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    // configure animation
     func configureLoadAnimation() {
         contentView.addSubview(loadAnim)
         loadAnim.snp.makeConstraints { make in
@@ -38,7 +38,7 @@ class LoadingDoorCell: UITableViewCell {
     }
     
     
-    
+    // configure contentView
     func configureContentView() {
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = #colorLiteral(red: 0.8887098432, green: 0.91862005, blue: 0.9181008935, alpha: 1)
@@ -46,6 +46,7 @@ class LoadingDoorCell: UITableViewCell {
         contentView.layer.cornerRadius = 15
     }
     
+    // set constraints
     override func layoutSubviews() {
             super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
