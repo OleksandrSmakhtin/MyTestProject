@@ -24,8 +24,8 @@ After tapping on a cell, the app starts to update door status (Unlocking - Unloc
 ### Updating status
 <p float="left">
   <img src="https://user-images.githubusercontent.com/75438934/190298342-e91fabf9-1205-4c99-bd6c-a957900b81f8.png" width="200" />
-  <img src="https://user-images.githubusercontent.com/75438934/190298349-098ac9a3-b56b-40ff-8f42-1b240e62dcbe.png" width="200" />
   <img src="https://user-images.githubusercontent.com/75438934/190298353-4e94a78e-f0eb-4080-8158-1187eb4e7e66.png" width="200" />
+  <img src="https://user-images.githubusercontent.com/75438934/190298349-098ac9a3-b56b-40ff-8f42-1b240e62dcbe.png" width="200" />
 </p>
 
 
